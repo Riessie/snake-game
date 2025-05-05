@@ -8,19 +8,15 @@ screen.setup(width=600, height=600)
 screen.bgcolor("black")
 screen.title("Snake Game")
 
+sections = []
+for i in range(3):
+    new_segment = Turtle("square")
+    new_segment.color("white")
+    new_segment.penup()
+    new_segment.goto(-20 * i, 0)
+    sections.append(new_segment)
 # Create a turtle object
-snake_seg1 = Turtle("square")
-snake_seg1.color("white")
-snake_seg1.goto(0, 0)
-
-snake_seg2 = Turtle("square")
-snake_seg2.color("white")
-snake_seg2.goto(-20, 0)
-
-snake_seg3 = Turtle("square")
-snake_seg3.color("white")
-snake_seg3.goto(-40, 0)
-
+ 
 screen.exitonclick()
 
 
