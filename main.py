@@ -28,6 +28,7 @@ while game_on:
         x = sections[i - 1].xcor()
         y = sections[i - 1].ycor()
         sections[i].goto(x, y)
+    sections[0].forward(20)  # Move the first segment forward
     #sections[0].forward(20)  # Move the first segment forward
     #for segment in sections:
      #   segment.forward(20)
