@@ -1,5 +1,6 @@
 from turtle import Turtle, Screen
 import random
+import time
 
 # Create a screen object
 screen = Screen()
@@ -7,6 +8,7 @@ screen.setup(width=600, height=600)
 # Set the background color and title
 screen.bgcolor("black")
 screen.title("Snake Game")
+screen.tracer(0)  # Turn off the screen updates
 
 sections = []
 for i in range(3):
@@ -19,14 +21,23 @@ for i in range(3):
 # loop to move the snake
 game_on = True
 while game_on:
-    for segment in sections:
-        segment.forward(20)
+    screen.update()  # Update the screen
+    time.sleep(0.1)  # Control the speed of the snake
+
+    for i in range(len(sections) - 1, 0, -1):
+        x = sections[i - 1].xcor()
+        y = sections[i - 1].ycor()
+        sections[i].goto(x, y)
+    #sections[0].forward(20)  # Move the first segment forward
+    #for segment in sections:
+     #   segment.forward(20)
         # Change the color of the segments randomly
         # segment.color(random.choice(["red", "green", "blue", "yellow", "purple"]))
 
     # Check for collision with the screen edges
     if sections[0].xcor() > 290 or sections[0].xcor() < -290 or sections[0].ycor() > 290 or sections[0].ycor() < -290:
         game_on = False 
+        
 screen.exitonclick()
 
 
