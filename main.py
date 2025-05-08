@@ -15,8 +15,18 @@ for i in range(3):
     new_segment.penup()
     new_segment.goto(-20 * i, 0)
     sections.append(new_segment)
-# Create a turtle object
- 
+
+# loop to move the snake
+game_on = True
+while game_on:
+    for segment in sections:
+        segment.forward(20)
+        # Change the color of the segments randomly
+        # segment.color(random.choice(["red", "green", "blue", "yellow", "purple"]))
+
+    # Check for collision with the screen edges
+    if sections[0].xcor() > 290 or sections[0].xcor() < -290 or sections[0].ycor() > 290 or sections[0].ycor() < -290:
+        game_on = False 
 screen.exitonclick()
 
 
