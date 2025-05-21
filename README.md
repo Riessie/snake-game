@@ -10,4 +10,9 @@ Create the classical snake-game with turtle in python.
 ## Step 2
 
 - make snake move 
-- set boundaries 
+- set boundaries
+
+## Step 3
+
+- implementation of keybindings
+
