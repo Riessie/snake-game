@@ -21,3 +21,22 @@ class Snake:
             y = self.segments[i - 1].ycor()
             self.segments[i].goto(x, y)
         self.head.forward(MOVE_DISTANCE)
+        # Check for collision with the screen edges
+        if self.head.xcor() > 290 or self.head.xcor() < -290 or self.head.ycor() > 290 or self.head.ycor() < -290:
+            return False
+        
+    def up(self):
+        if self.head.heading() != 270:
+            self.head.setheading(90)
+
+    def down(self):
+        if self.head.heading() != 90:
+            self.head.setheading(270)
+
+    def left(self):
+        if self.head.heading() != 0:
+            self.head.setheading(180)
+
+    def right(self):
+        if self.head.heading() != 180:
+            self.head.setheading(0)
