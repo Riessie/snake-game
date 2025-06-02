@@ -15,4 +15,5 @@ Create the classical snake-game with turtle in python.
 ## Step 3
 
 - implementation of keybindings
+- snake food and collision 
 
