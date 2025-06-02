@@ -1,8 +1,7 @@
-from turtle import Turtle, Screen
+from turtle import Screen
 from snake import Snake
-import random
 import time
-
+from food import Food
 # Create a screen object
 screen = Screen()
 screen.setup(width=600, height=600)
@@ -12,6 +11,7 @@ screen.title("Snake Game")
 screen.tracer(0)  # Turn off the screen updates
 
 snake = Snake()
+food = Food()
 
 screen.listen()  # Listen for keyboard input
 screen.onkey(snake.move, "Up")  # Move the snake up when 'Up' key is pressed
@@ -24,6 +24,13 @@ while game_on:
     screen.update()  # Update the screen
     time.sleep(0.1)  # Control the speed of the snake
     snake.move()  # Move the snake
+    # Check for collision with food
+    if snake.head.distance(food) < 15:
+        food.refresh()
+         # If the snake's head is close to the food
+        food.goto(100, 100)  # Move the food to a new random position
+        new_segment = snake.segments[-1].clone()  # Create a new segment
+        snake.segments.append(new_segment)  # Add the new segment to the snake
     # Check for collision with the screen edges
     #if segment[0].xcor() > 290 or sections[0].xcor() < -290 or sections[0].ycor() > 290 or sections[0].ycor() < -290:
      #   game_on = False 
