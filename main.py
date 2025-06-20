@@ -35,8 +35,15 @@ while game_on:
         new_segment = snake.segments[-1].clone()  # Create a new segment
         snake.segments.append(new_segment)  # Add the new segment to the snake
     # Check for collision with the screen edges
-    #if segment[0].xcor() > 290 or sections[0].xcor() < -290 or sections[0].ycor() > 290 or sections[0].ycor() < -290:
-     #   game_on = False 
+    if snake.head.xcor() > 280 or snake.head.xcor() < -280 or snake.head.ycor() > 280 or snake.head.ycor() < -280:
+        game_on = False 
+        scoresboard.game_over()
+    # Check for collision with itself
+    for segment in snake.segments[1:]:
+        if snake.head.distance(segment) < 10:
+            game_on = False
+            scoresboard.game_over()
+
         
 screen.exitonclick()
 

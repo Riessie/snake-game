@@ -39,3 +39,8 @@ class Scoreboard(Turtle):
             self.save_high_score()
         self.score = 0
         self.update_scoreboard()
+
+    def game_over(self):
+        self.goto(0, 0)
+        self.write("GAME OVER", align="center", font=("Courier", 24, "normal"))
+        self.reset()
