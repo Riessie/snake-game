@@ -29,6 +29,7 @@ while game_on:
     # Check for collision with food
     if snake.head.distance(food) < 15:
         food.refresh()
+        self.extend_snake()
         scoresboard.increase_score()
          # If the snake's head is close to the food
         food.goto(100, 100)  # Move the food to a new random position

@@ -15,15 +15,24 @@ class Snake:
             new_segment.goto(-20 * i, 0)
             self.segments.append(new_segment)
 
+    def add_segment(self):
+        new_segment = Turtle("square")
+        new_segment.color("white")
+        new_segment.penup()
+        self.segments.append(new_segment)
+        self.move()
+
+    def extend_snake(self):
+        self.add_segment()
+        
     def move(self):
         for i in range(len(self.segments) - 1, 0, -1):
             x = self.segments[i - 1].xcor()
             y = self.segments[i - 1].ycor()
             self.segments[i].goto(x, y)
         self.head.forward(MOVE_DISTANCE)
-        # Check for collision with the screen edges
-        #if self.head.xcor() > 290 or self.head.xcor() < -290 or self.head.ycor() > 290 or self.head.ycor() < -290:
-         #   return False
+    
+    
         
     def up(self):
         if self.head.heading() != 270:
