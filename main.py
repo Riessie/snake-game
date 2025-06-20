@@ -1,6 +1,7 @@
 from turtle import Screen
 from snake import Snake
 import time
+from scoreboard import Scoreboard
 from food import Food
 # Create a screen object
 screen = Screen()
@@ -12,6 +13,7 @@ screen.tracer(0)  # Turn off the screen updates
 
 snake = Snake()
 food = Food()
+scoresboard = Scoreboard()
 
 screen.listen()  # Listen for keyboard input
 screen.onkey(snake.move, "Up")  # Move the snake up when 'Up' key is pressed
@@ -27,6 +29,7 @@ while game_on:
     # Check for collision with food
     if snake.head.distance(food) < 15:
         food.refresh()
+        scoresboard.increase_score()
          # If the snake's head is close to the food
         food.goto(100, 100)  # Move the food to a new random position
         new_segment = snake.segments[-1].clone()  # Create a new segment
